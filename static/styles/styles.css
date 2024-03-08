@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Roboto:ital,wght@0,100;0,300;0,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Protest+Strike&display=swap');
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+
+    }
+    
+    body {
+	margin-top: 80px;
+	background-color: #f5f1f1;
+    }
+    
+
+    .intro-section {
+
+	padding: 20px;
+	text-align: center;
+	position: relative;
+    }
+    .intro-section-content {
+	position: relative;
+	z-index: 1; /* Ensure content appears above overlay */
+    }
+    .overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+
+    }
+    main {
+	margin-top: 20px;
+    }
+    .intro-section h2 {
+	color: rgb(0, 0, 0);
+	margin: auto;
+	max-width: 500px;
+	font-size: 50px;
+	align-items: center;
+    }
+    .intro-section p{
+	color: rgb(0, 0, 0);
+	max-width: 500px;
+	margin: auto;
+	padding: 10px;
+    }
+    .search-container {
+	margin-top: 20px;
+    }
+    
+    input[type="text"] {
+	padding: 10px;
+	width: 60%;
+	border: 1px solid #604836;
+	border-radius: 5px;
+	font-size: 16px;
+    }
+    .button-55 {
+	align-self: center;
+	background-color: #fff;
+	background-image: none;
+	background-position: 0 90%;
+	background-repeat: repeat no-repeat;
+	background-size: 4px 3px;
+	border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+	border-style: solid;
+	border-width: 2px;
+	box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+	box-sizing: border-box;
+	color: #41403e;
+	cursor: pointer;
+	display: inline-block;
+	font-family: Neucha, sans-serif;
+	font-size: 1rem;
+	line-height: 23px;
+	outline: none;
+	padding: .75rem;
+	text-decoration: none;
+	transition: all 235ms ease-in-out;
+	border-bottom-left-radius: 15px 255px;
+	border-bottom-right-radius: 225px 15px;
+	border-top-left-radius: 255px 15px;
+	border-top-right-radius: 15px 225px;
+	user-select: none;
+	-webkit-user-select: none;
+	touch-action: manipulation;
+      }
+      
+      .button-55:hover {
+	box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
+	transform: translate3d(0, 2px, 0);
+      }
+      
+      .button-55:focus {
+	box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
+      }
+    
+    .recipe-section {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	padding: 20px;
+    }
+    #searchInput {
+	width: 500px;
+    }
+    #searchBtn {
+	width: 100px;
+	height: 40px;
+	border-radius: 13px;
+	border: 1px solid;
+	background-color: #ffffff; /* Green background */
+	color: white; /* White text */
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow */
+	transition: background-color 0.3s ease; /* Smooth transition */
+	color: #000000;
+	font-family: Arial, Helvetica, sans-serif ;
+	font-size: 17px;
+    }
+    
+    #searchBtn:hover {
+	background-color: #d83636; /* Darker green background on hover */
+    }
+    
+    .recipes {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+    }
+    
+    .recipe-card {
+	position: relative;
+	width: 300px;
+	height: 400px;
+	margin: 10px;
+	padding: 15px;
+	border-radius: 10px;
+	border: 1px solid grey;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+	transition: box-shadow 0.3s ease; /* Add transition property */
+    }
+    
+    .recipe-card:hover {
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Change box-shadow on hover */
+    }
+    
+    .recipe-card img {
+	width: 270px;
+    }
+    
+    .recipe-card h3 {
+	margin-bottom: 10px;
+	font-size: 30px;
+	font-family: "Protest Strike", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+    }
+    
+    .recipe-card p {
+	margin-bottom: 5px;
+    }
+
+    .save_icon {
+	width: 45px;
+	height: 45px;
+	background-color: #d80b0b;
+	border-radius: 50%;
+	cursor: pointer;
+	position: absolute;
+	top: 5%;
+	right: 7%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+    }
+    
+    #heart {
+	font-size: 24px;
+	position: absolute;
+	color: white;
+
+    }
+
+    .pop-up {
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	display: none; 
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid green;
+	width: 230px;
+	height: 350px;
+	background-color: white; 
+	z-index: 100; 
+    }
+    
+.pop-up *{
+	margin-bottom: 30px;
+}
+.pop-up img {
+	width: 40px;
+	height: auto;
+}

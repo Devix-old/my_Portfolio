@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/styles/styles.css">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        .dashboard-container {
+            margin: 20px;
+            padding: 20px;
+        }
+        .logout-button {
+            background-color: #d9534f;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .logout-button:hover {
+            background-color: #c9302c;
+        }
+        .welcome-message {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .additional-section {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+	.home-button {
+		background-color: #fff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+		margin-top: 20px;
+	}
+    </style>
+</head>
+<body>
+	<header>
+		<div class="header-container">
+		    <h1>Recipes finder</h1>
+			{%if username%}
+		    <div class="myaccount">
+			<ul>
+				<li><a href="{{url_for('myrecipes')}}">my recipes</a></li>
+				<li><a href="{{url_for('profile')}}">my profile</a></li>
+				<li> <a href="{{url_for('logout')}}">logout</a>
+					</li>
+	
+			</ul>
+		    </div>
+			    {% endif %}
+	
+		    {%if not username%}
+			<a href="{{url_for('login')}}" class="button-55">Login</a>
+		    {% endif %}
+		    <!-- You can add a logo or any other header content here -->
+		</div>
+    <div class="dashboard-container">
+	<h1>Hi {{current_user.username}}</h1>
+        <h1 class="welcome-message">Welcome to Your Recipe Dashboard!</h1>
+        <form action="/logout" method="POST">
+            <button type="submit" class="logout-button" ><a href="{{url_for('logout')}}">Logout</a></button>
+        </form>
+
+	<form action="/home" method="POST">
+		<button type="submit" class="home-button" ><a href="{{url_for('home')}}">Home</a></button>
+	    </form>
+        <div class="additional-section">
+            <p>Explore new recipes, save your favorites, and share your culinary adventures with friends!</p>
+        </div>
+    </div>
+</body>
+</html>

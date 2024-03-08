@@ -1,0 +1,55 @@
+.header-container {
+	width: 100%;
+	align-items: center;
+	display: flex;
+	padding: 20px;
+	justify-content: space-between;
+	background-color: #f4f4f4;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+    }
+    
+
+    
+    .myaccount {
+	margin-right: 50px;
+	padding: 10px;
+	display: flex;
+    }
+
+    .myaccount ul{
+	display: flex;
+    }
+    .myaccount ul li {
+	margin-left: 90px;
+	cursor: pointer;
+	list-style: none;
+    }
+
+    .myaccount ul li a{
+	text-transform: capitalize;
+	text-decoration: none;
+	color: inherit;
+	position: relative;
+    }
+    .myaccount ul li a::after {
+        position: absolute;
+        left: 0;
+        bottom: -5px;
+        content: "";
+        width: 0%;
+        height: 2px;
+        background-color: #f7a800;
+        transition: 0.05s ease-out;
+}
+    .myaccount ul li a:hover::after {
+        width: 100%;
+}
+
+
+    .header-container h1 {
+
+    }

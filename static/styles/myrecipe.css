@@ -1,0 +1,94 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+
+    }
+    
+    body {
+	margin-top: 80px;
+	background-color: #f5f1f1;
+    }
+
+
+.container {
+
+	background-color: #ffffff;
+	width: 90%;
+	margin-left: 5%;
+	margin-top: 150px;
+	display: flex;
+	flex-direction: column;
+	align-items: center
+}
+.title {
+	font-family: 'Courier New', Courier, monospace;
+	color: rgb(69, 59, 59);
+	padding: 20px;
+	text-align: center;
+	width: 100%;
+	border-bottom: 2px solid rgb(69, 59, 59, 0.3);
+	
+}
+
+.cards {
+	display: flex;
+	flex-wrap: wrap;
+	position: relative;
+}
+.recipe-card {
+	position: relative;
+	width: 240px; /* Set the width of the card */
+	height: 300px; /* Set the height of the card */
+	margin: 10px;
+	padding: 15px;
+	border-radius: 10px;
+	border: 1px solid grey;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+	transition: box-shadow 0.3s ease;
+    }
+    
+    .recipe-card img {
+	width: 100%; /* Make the image fill the width of the card */
+	height: 50%; /* Set the height of the image relative to the card height */
+	object-fit: cover; /* Ensure the image fills the container while preserving aspect ratio */
+    }
+    
+    .recipe-card h3 {
+	font-size: 16px; /* Adjust font size based on card height */
+	margin-bottom: 5px;
+    }
+    
+    .recipe-card p {
+	font-size: 14px; /* Adjust font size based on card height */
+	margin-bottom: 3px;
+    }
+    .remove_icon {
+	width: 45px;
+	height: 45px;
+	border-radius: 50%;
+	cursor: pointer;
+	position: absolute;
+	top: -4%;
+	right: -4%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 1000;
+    }
+    
+    .remove_icon div {
+	height: 5px;
+	width: 30%;
+	background-color: black;
+    }
+
+    #heart {
+	font-size: 24px;
+	position: absolute;
+	color: white;
+
+    }
+    .not_found {
+	padding: 30px;
+    }

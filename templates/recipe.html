@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ recipe.title }}</title>
+    <link rel="stylesheet" href="../static/styles/header.css">
+    <link rel="stylesheet" href="../static/styles/recipe.css">
+    
+</head>
+{% block content %}
+<header>
+        <div class="header-container">
+		<a href="{{url_for('home')}}" style="text-decoration: none; color: inherit;">
+			<h1>Recipes finder</h1>
+		</a>
+            
+		{%if username%}
+	    <div class="myaccount">
+		<ul>
+			<li><a href="{{url_for('myrecipes')}}">my recipes</a></li>
+			<li><a href="{{url_for('profile')}}">my profile</a></li>
+			<li> <a href="{{url_for('logout')}}">logout</a>
+				</li>
+
+		</ul>
+	    </div>
+	    	{% endif %}
+
+	    {%if not username%}
+	        <a href="{{url_for('login')}}" class="button-55">Login</a>
+	    {% endif %}
+            <!-- You can add a logo or any other header content here -->
+        </div>
+	<script src="../static/styles/scripts/javascript.js"></script>
+    </header>
+<body>
+	
+  
+    <div class="container">
+        <div class="image">
+            <img src="{{ recipe.image }}">
+        </div>
+        <div class="title">
+            <h1>{{ recipe.title }}</h1>
+        </div>
+        <div class="solid"></div>
+        <h2 class="description">{{ recipe.summary | striptags }}</h2>
+        <div class="solid"></div>
+        <div class="ingre_steps">
+            <ul class="ingredients">
+                <h3>Ingredients</h3>
+                {% for step in recipe.analyzedInstructions[0].steps %}
+                    {% for ingredient in step.ingredients %}
+                        <li>{{ ingredient.name }}</li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+            <ul class="steps">
+                <h3>Steps</h3>
+                {% for step in recipe.analyzedInstructions[0].steps %}
+                    <li>{{ step.step }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    {% endblock %}
+</body>
+
+</html>

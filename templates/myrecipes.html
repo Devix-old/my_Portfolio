@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../static/styles/header.css">
+	<link rel="stylesheet" href="../static/styles/myrecipe.css">
+	<title>Document</title>
+</head>
+<header>
+        <div class="header-container">
+		<a href="{{url_for('home')}}" style="text-decoration: none; color: inherit;">
+			<h1>Recipes finder</h1>
+		</a>
+            
+		{%if username%}
+	    <div class="myaccount">
+		<ul>
+			<li><a href="{{url_for('myrecipes')}}">my recipes</a></li>
+			<li><a href="{{url_for('profile')}}">my profile</a></li>
+			<li> <a href="{{url_for('logout')}}">logout</a>
+				</li>
+
+		</ul>
+	    </div>
+	    	{% endif %}
+
+	    {%if not username%}
+	        <a href="{{url_for('login')}}" class="button-55">Login</a>
+	    {% endif %}
+            <!-- You can add a logo or any other header content here -->
+        </div>
+	<script src="../static/styles/scripts/javascript.js"></script>
+    </header>
+<body>
+	<div class="container">
+		<div class="title">
+		<h1 >My Saved Recipes</h1>
+		</div>	
+	<div class="cards">
+		{% if recipes %}
+		{% for recipe in recipes %}
+	<a href="{{ url_for('recipe', recipe_id=recipe.id) }}" style="text-decoration: none; color: inherit;">
+		
+	    <div class="recipe-card" data-recipe-id="{{ recipe.id }}">
+		<button class="remove_icon" data-recipe-id="{{ recipe.id }}">
+			<div></div>
+		    </button>
+		<img src="{{ recipe.image }}" alt="{{ recipe.title }}">
+		<h3>{{ recipe.title }}</h3>
+		<p>HealthScore: {{ recipe.healthScore }}</p>
+		<p>Duration: {{ recipe.readyInMinutes }}</p>
+		{% if recipe.cuisines %}
+		    <p>Origin: {{ recipe.cuisines }}</p>
+		{% endif %}	
+		
+	        
+	</div>
+	
+	</a>
+	{% endfor %}
+        {% else %}
+	<p class="not_found">No recipes found.</p>
+    
+	</div>
+	{% endif %}
+	
+	
+</div>
+</body>
+</html>
