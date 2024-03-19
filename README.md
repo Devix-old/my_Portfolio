@@ -1,3 +1,4 @@
+![Screenshot](static/images/screenshot%20recipefinder.png)
 # Introduction
 
 Recipe Finder is a web application that allows users to discover delicious recipes for various occasions. Whether you're looking for a quick meal idea or planning an elaborate dinner party, Recipe Finder has you covered. With an intuitive search feature and a vast database of recipes, finding the perfect dish has never been easier.
