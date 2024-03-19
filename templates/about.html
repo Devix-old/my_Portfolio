@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Recipe Finder</title>
+    <link rel="stylesheet" href="../static/styles/header.css">
+    <link rel="stylesheet" href="../static/styles/styles.css">
+    ​<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+		zoom: 80%;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .intro img.back-g {
+            width: 100%;
+            height: auto;
+            opacity: 0.8;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px 0;
+        }
+        .feature-item {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 20px;
+            text-align: left;
+        }
+        .feature-item h1 {
+            color: #333;
+            font-size: 24px;
+        }
+        .feature-item p {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        .feature-item video {
+            width: 100%;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+        /* Adjust your logo size if necessary */
+	.logo {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 500px;
+            height: auto;
+            z-index: 1;
+	
+        }
+	.back-g {
+		
+	}
+    </style>
+</head>
+<header>
+        <div class="header-container">
+		<a href="{{url_for('home')}}" style="text-decoration: none; color: inherit;">
+			<h1>Recipes finder</h1>
+		</a>
+            
+		{% if username %}
+		<div class="myaccount">
+		    <ul>
+			<li><a href="{{ url_for('myrecipes') }}">my recipes</a></li>
+			<li><a href="{{ url_for('about') }}">about</a></li>
+			<li><a href="{{ url_for('logout') }}">logout</a></li>
+		    </ul>
+		</div>
+		{% else %}
+		<div class="myaccount">
+		    <ul>
+			<li><a href="{{ url_for('about') }}">about</a></li>
+			<li><a href="{{ url_for('login') }}">login</a></li>
+			<li><a href="{{ url_for('signup') }}">sign up</a></li>
+		    </ul>
+		</div>
+		{% endif %}
+            <!-- You can add a logo or any other header content here -->
+        </div>
+	<script src="../static/scripts/javascript.js"></script>
+	<script src="../static/scripts/search_type.js"></script>
+	
+    </header>
+<body>
+    <div class="container">
+        <div class="intro">
+            <img class="back-g" src="https://naturesfoodpatch.com/wp-content/uploads/2021/08/Turkey-and-Peppers-BLOG.jpg" alt="Food Cooking Background">
+            <img class="logo" src="../static/images/Recipes-finder-3-3-2024.png" alt="Recipes Finder Logo">
+        </div>
+
+        <div class="features">
+            <!-- Feature 1: Search for the Perfect Recipe -->
+            <div class="feature-item">
+                <h1>1. Search for the Perfect Recipe</h1>
+                <p>Embark on a culinary adventure with our powerful recipe search. Simply enter what you crave, and we'll serve up exactly what you need to satiate your appetite. Finding your next kitchen masterpiece has never been easier!</p>
+                <video src="../static/images/Enregistrement 2024-03-12 022604.mp4" autoplay muted loop></video>
+            </div>
+
+            <!-- Feature 2: Displayed Recipes -->
+            <div class="feature-item">
+                <h1>2. Displayed Recipes</h1>
+                <p>Feast your eyes on our beautifully presented dishes. From vivid imagery to clear, concise instructions, we ensure every recipe is a visual treat, guiding you effortlessly from prep to plate.</p>
+                <video src="../static/images/save_recipe.mp4" autoplay muted loop></video>
+            </div>
+
+            <!-- Feature 3: Saved Recipes -->
+            <div class="feature-item">
+                <h1>3. Saved Recipes</h1>
+                <p>Keep your culinary finds in one place with our recipe saving feature. Whether planning your next meal or curating a collection of go-to favorites, your saved recipes are just a click away.</p>
+                <img src="../static/images/foto3.png" alt="Saved Recipes" style="width: 100%; border-radius: 8px;">
+            </div>
+	    
+        </div>
+    </div>
+    <div class="about-section">
+	<div class="about-content">
+	    <h2>About Us</h2>
+	    <p>How did this idea come to me? I was looking for an idea for a website to work on and benefit from at the same time. Sitting with my mother, as we were approaching Ramadan—a month of significant cooking—it struck me: why not create a website where I write about a dish, and it gives me the recipe to cook it. Delving into programming the website, I realized it was a fantastic idea. Now, I have my own site that teaches me how to cook, intertwining technology, intimacy, and gastronomy.</p>
+	</div>
+	<h3 class="connect">Connect with Us</h3>
+	<div class="social-links">
+	    
+	    <div class="icons">
+		<a href="https://www.linkedin.com/in/mohamed-elgharef/" target="_blank">
+			
+			<i class="fa fa-linkedin-square" style="font-size:36px"></i>
+		</a>
+		<a href="https://github.com/devix-old" target="_blank">
+			<i class="fa fa-github" style="font-size:36px;"></i>
+		</a>
+		<a href="https://twitter.com/mohamedelgharef" target="_blank">
+			<i class="fa fa-twitter" style="font-size:24px"></i>
+		</a>
+	    </div>
+	    <p>Explore our project on <a href="https://github.com/Devix-old/my_Portfolio" target="_blank">GitHub</a>.</p>
+	</div>
+    </div>
+    
+    
+</body>
+</html>

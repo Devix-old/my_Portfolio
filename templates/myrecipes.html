@@ -14,24 +14,28 @@
 			<h1>Recipes finder</h1>
 		</a>
             
-		{%if username%}
-	    <div class="myaccount">
-		<ul>
-			<li><a href="{{url_for('myrecipes')}}">my recipes</a></li>
-			<li><a href="{{url_for('profile')}}">my profile</a></li>
-			<li> <a href="{{url_for('logout')}}">logout</a>
-				</li>
-
-		</ul>
-	    </div>
-	    	{% endif %}
-
-	    {%if not username%}
-	        <a href="{{url_for('login')}}" class="button-55">Login</a>
-	    {% endif %}
+		{% if username %}
+		<div class="myaccount">
+		    <ul>
+			<li><a href="{{ url_for('myrecipes') }}">my recipes</a></li>
+			<li><a href="{{ url_for('about') }}">about</a></li>
+			<li><a href="{{ url_for('logout') }}">logout</a></li>
+		    </ul>
+		</div>
+		{% else %}
+		<div class="myaccount">
+		    <ul>
+			<li><a href="{{ url_for('about') }}">about</a></li>
+			<li><a href="{{ url_for('login') }}">login</a></li>
+			<li><a href="{{ url_for('signup') }}">sign up</a></li>
+		    </ul>
+		</div>
+		{% endif %}
             <!-- You can add a logo or any other header content here -->
         </div>
-	<script src="../static/styles/scripts/javascript.js"></script>
+	<script src="../static/scripts/javascript.js"></script>
+	<script src="../static/scripts/search_type.js"></script>
+	
     </header>
 <body>
 	<div class="container">

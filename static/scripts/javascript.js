@@ -1,9 +1,5 @@
 document.addEventListener('DOMContentLoaded', (event) => {
-	document.getElementById("searchBtn").addEventListener("click", function() {
-	    var searchQuery = document.getElementById("searchInput").value;
-	    console.log("User searched for:", searchQuery);
-	    window.location.href = `/search?query=${encodeURIComponent(searchQuery)}`;
-	});
+
     
 	const saveIcons = document.querySelectorAll('.save_icon');
 	saveIcons.forEach(icon => {
@@ -30,25 +26,25 @@ document.addEventListener('DOMContentLoaded', (event) => {
     
     // Function to send recipe ID to Flask route to save the recipe
     function saveRecipe(recipeId) {
-	fetch(`/save_recipe/${recipeId}` ,{
+	fetch(`/save_recipe/${recipeId}` ,{ //
 		method: 'POST',
 		headers: {'Content-Type': 'application/json'},
-		body: JSON.stringify({id: recipeId})
+		body: JSON.stringify({id: recipeId}) //
 	    })
 	    .then (response => response.json())
 	    .then (data => {
 		const popUp = document.querySelector('.pop-up');
         	const popUpContent = popUp.querySelector('h1');
-		const popUpicon = popUp.querySelector('img')
-		const saveIcon = document.querySelector(`.save_icon[data-recipe-id="${recipeId}"]`);
+		const popUpicon = popUp.querySelector('img');
+		const saveIcon = document.querySelector(`.save_icon[data-recipe-id="${recipeId}"]`); //
 		
-		if (data.saved)
+		if (data.saved) //
 		{
 			saveIcon.style.backgroundColor = "green";
 			popUpContent.textContent = "recipe saved!";
 			popUpicon.src = "https://icon-library.com/images/validity-icon/validity-icon-27.jpg"
 		}
-		else {
+		else { //
 
 			saveIcon.style.backgroundColor = "#d80b0b";
 			popUpicon.src = "https://cdn2.iconfinder.com/data/icons/ui-elements-bright-fill/60/049_-_Remove-512.png"

@@ -6,11 +6,13 @@
     <title>Recipe Finder</title>
     <link rel="stylesheet" href="../static/styles/styles.css">
     <link rel="stylesheet" href="../static/styles/header.css">
-
+    <link rel="stylesheet" href="../static/styles/footer.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Protest+Strike&display=swap" rel="stylesheet">
 <script src="https://kit.fontawesome.com/3929e16ef5.js" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </head>
 <header>
         <div class="header-container">
@@ -18,44 +20,56 @@
 			<h1>Recipes finder</h1>
 		</a>
             
-		{%if username%}
-	    <div class="myaccount">
-		<ul>
-			<li><a href="{{url_for('myrecipes')}}">my recipes</a></li>
-			<li><a href="{{url_for('profile')}}">my profile</a></li>
-			<li> <a href="{{url_for('logout')}}">logout</a>
-				</li>
-
-		</ul>
-	    </div>
-	    	{% endif %}
-
-	    {%if not username%}
-	        <a href="{{url_for('login')}}" class="button-55">Login</a>
-	    {% endif %}
+		{% if username %}
+		<div class="myaccount">
+		    <ul>
+			<li><a href="{{ url_for('myrecipes') }}">my recipes</a></li>
+			<li><a href="{{ url_for('about') }}">about</a></li>
+			<li><a href="{{ url_for('logout') }}">logout</a></li>
+		    </ul>
+		</div>
+		{% else %}
+		<div class="myaccount">
+		    <ul>
+			<li><a href="{{ url_for('about') }}">about</a></li>
+			<li><a href="{{ url_for('login') }}">login</a></li>
+			<li><a href="{{ url_for('signup') }}">sign up</a></li>
+		    </ul>
+		</div>
+		{% endif %}
             <!-- You can add a logo or any other header content here -->
         </div>
-	<script src="../static/styles/scripts/javascript.js"></script>
+	<script src="../static/scripts/javascript.js"></script>
+	<script src="../static/scripts/search_type.js"></script>
+	
     </header>
 <body>
     
     <main>
-        <section class="intro-section">
+	<section class="intro-section">
 		<div class="overlay"></div>
 		<div class="intro-section-content">
-            <h2>Discover Delicious Recipes</h2>
-            <p>Find the perfect recipe for any occasion and satisfy your taste buds with our wide range of culinary delights.</p>
-            <div class="search-container">
-                <input type="text" id="searchInput" placeholder="Search for recipes...">
-                <button id="searchBtn">Search</button>
-            </div>
-	</div>
-        </section>
+		    <h2>Discover Delicious Recipes</h2>
+		    <p>Find the perfect recipe for any occasion and satisfy your taste buds with our wide range of culinary delights.</p>
+		    <div class="search-container">
+			<div class="search_type" style="width: 498px; height: 39px;">
+			    <div class="for_recipe" style="background-color: rgb(255, 255, 255); width: 50%; height: 100%; border-radius: none; color: rgb(133, 32, 32);">Search for recipe</div>
+			    <div class="by_ingredient" style="background-color: rgb(255, 255, 255); width: 50%; height: 100%; border-radius: none; color: rgb(133, 32, 32); border-left: 1px solid;">Search by ingredient</div>
+			</div>
+			<div class="ingredient-container">
+			    <!-- Ingredients will be displayed here -->
+			</div>
+			<input type="text" id="searchInput" placeholder="Search for recipes...">
+			<button id="searchBtn">Search</button>
+		    </div>
+		</div>
+	    </section>
+	    
 	<div style="display: flex; justify-content: center; align-items: center; margin-bottom: 20px;" >
         <h1>Search Results</h1>
 	</div>
     <div class="recipes">
-
+	
         {% for recipe in recipes %}
     <a href="{{ url_for('recipe', recipe_id=recipe.id) }}" style="text-decoration: none; color: inherit;">
         <div class="recipe-card">
@@ -72,10 +86,11 @@
                     <i id="heart" class="far fa-heart"></i>
                 </button>
             {% else %}
-                <button class="save_icon" data-recipe-id="{{ recipe.id }}">
+                <button class="save_icon" data-recipe-id="{{ recipe.id }}" style="background-color: #d80b0b;">
                     <i id="heart" class="far fa-heart"></i>
                 </button>
 	    {% endif %}
+
         </div>
     </a>
 {% else %}
@@ -85,6 +100,7 @@
     </main>
     <section class="recipes">
     </section>
+    {% if current_user.is_authenticated%}
     <div class="pop-up">
 	<span id="closePopUp" style="position: absolute; top: 10px; right: 10px; cursor: pointer;">&times;</span>
 	<img src="">
@@ -94,10 +110,44 @@
 	<a href="{{ url_for('myrecipes') }}">View all recipes</a>
 	
     </div>
+    {%else%}
+    
+    <div class="pop-up">
+	<span id="closePopUp" style="position: absolute; top: 10px; right: 10px; cursor: pointer;">&times;</span>
+	<img src="">
 
+	    <h1></h1>
 
-    <footer>
-        <!-- Footer content -->
+	<a href="{{ url_for('signup') }}">Sign up to save recipes</a>
+	
+    </div>
+    {%endif%}
+
+    <footer class="site-footer">
+	<div class="footer-container">
+	    <div class="footer-about">
+		<h3>Recipes Finder</h3>
+		<p>Discover the world of flavors with our curated recipes. Find, share, and enjoy the joy of cooking with our community.</p>
+	    </div>
+	    <div class="footer-links">
+		<h3>Quick Links</h3>
+		<ul>
+		    <li><a href="{{ url_for('home') }}">Home</a></li>
+		    <li><a href="{{ url_for('about') }}">About</a></li>
+		    <li><a href="{{ url_for('myrecipes') }}">My Recipes</a></li>
+		    <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
+		</ul>
+	    </div>
+	    <div class="footer-social">
+		<h3>Follow Us</h3>
+
+		<a href="https://twitter.com/mohamedelgharef"><i class="fab fa-twitter"></i></a>
+		<a href="https://github.com/devix-old" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/mohamed-elgharef/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+	    </div>
+	</div>
     </footer>
+    
+    <link rel="stylesheet" href="../static/styles/footer.css">
 </body>
 </html>

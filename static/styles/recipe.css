@@ -13,12 +13,13 @@
 
     
     .container {
+	position: relative;
 	max-width: 900px;
 	margin: 80px auto 30px; /* Increase top margin to ensure content does not hide under the fixed header */
 	box-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
 	padding: 20px; /* Optional: Adds some padding inside the container */
     }
-
+    
 
 .title {
 	display: flex;
@@ -123,3 +124,46 @@
       .button-55:focus {
 	box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
       }
+
+
+      .save_icon {
+	width: 45px;
+	height: 45px;
+	background-color: #d80b0b;
+	border-radius: 50%;
+	cursor: pointer;
+	position: absolute;
+	top: -1%;
+	right: -1%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+    }
+    #heart {
+	font-size: 24px;
+	position: absolute;
+	color: white;
+    }
+    .pop-up {
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	display: none; 
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid green;
+	width: 230px;
+	height: 350px;
+	background-color: white; 
+	z-index: 100; 
+    }
+    
+.pop-up *{
+	margin-bottom: 30px;
+}
+.pop-up img {
+	width: 40px;
+	height: auto;
+}

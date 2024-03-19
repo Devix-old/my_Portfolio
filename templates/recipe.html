@@ -6,7 +6,7 @@
     <title>{{ recipe.title }}</title>
     <link rel="stylesheet" href="../static/styles/header.css">
     <link rel="stylesheet" href="../static/styles/recipe.css">
-    
+    <script src="https://kit.fontawesome.com/3929e16ef5.js" crossorigin="anonymous"></script>
 </head>
 {% block content %}
 <header>
@@ -15,24 +15,28 @@
 			<h1>Recipes finder</h1>
 		</a>
             
-		{%if username%}
-	    <div class="myaccount">
-		<ul>
-			<li><a href="{{url_for('myrecipes')}}">my recipes</a></li>
-			<li><a href="{{url_for('profile')}}">my profile</a></li>
-			<li> <a href="{{url_for('logout')}}">logout</a>
-				</li>
-
-		</ul>
-	    </div>
-	    	{% endif %}
-
-	    {%if not username%}
-	        <a href="{{url_for('login')}}" class="button-55">Login</a>
-	    {% endif %}
+		{% if username %}
+		<div class="myaccount">
+		    <ul>
+			<li><a href="{{ url_for('myrecipes') }}">my recipes</a></li>
+			<li><a href="{{ url_for('about') }}">about</a></li>
+			<li><a href="{{ url_for('logout') }}">logout</a></li>
+		    </ul>
+		</div>
+		{% else %}
+		<div class="myaccount">
+		    <ul>
+			<li><a href="{{ url_for('about') }}">about</a></li>
+			<li><a href="{{ url_for('login') }}">login</a></li>
+			<li><a href="{{ url_for('signup') }}">sign up</a></li>
+		    </ul>
+		</div>
+		{% endif %}
             <!-- You can add a logo or any other header content here -->
         </div>
-	<script src="../static/styles/scripts/javascript.js"></script>
+	<script src="../static/scripts/javascript.js"></script>
+	<script src="../static/scripts/search_type.js"></script>
+	
     </header>
 <body>
 	
@@ -63,7 +67,38 @@
                 {% endfor %}
             </ul>
         </div>
+	{% if current_user.is_authenticated and recipe.id in current_user.get_saved_recipes() %}
+                <button class="save_icon" data-recipe-id="{{ recipe.id }}" style="background-color: green;">
+                    <i id="heart" class="far fa-heart"></i>
+                </button>
+            {% else %}
+                <button class="save_icon" data-recipe-id="{{ recipe.id }}">
+                    <i id="heart" class="far fa-heart"></i>
+                </button>
+	    {% endif %}
     </div>
+    {% if current_user.is_authenticated%}
+    <div class="pop-up">
+	<span id="closePopUp" style="position: absolute; top: 10px; right: 10px; cursor: pointer;">&times;</span>
+	<img src="">
+
+	    <h1></h1>
+
+	<a href="{{ url_for('myrecipes') }}">View all recipes</a>
+	
+    </div>
+    {%else%}
+    
+    <div class="pop-up">
+	<span id="closePopUp" style="position: absolute; top: 10px; right: 10px; cursor: pointer;">&times;</span>
+	<img src="">
+
+	    <h1></h1>
+
+	<a href="{{ url_for('signup') }}">Sign up to save recipes</a>
+	
+    </div>
+    {%endif%}
     {% endblock %}
 </body>
 
